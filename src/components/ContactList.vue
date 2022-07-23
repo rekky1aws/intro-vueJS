@@ -1,3 +1,7 @@
+<script setup>
+import BurgerMenuIcon from './icons/BurgerMenuIcon.vue'
+</script>
+
 <script>
 class Contact {
 	constructor (name, imageName = "../placeholder.png", status = false)
@@ -24,7 +28,10 @@ export default {
 <template>
 	<div class="contact-list">
 		<div class="top-menu">
-			
+			<button class="burger-button cliquable">
+				<BurgerMenuIcon />
+			</button>
+			<h1>Vue Chat</h1>
 		</div>
 		<div class="contacts-container">
 			<div class="contact" v-for="contact in contacts">
@@ -38,6 +45,26 @@ export default {
 </template>
 
 <style>
+.burger-button {
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	border: none;
+	background-color: #FFF0;
+}
+
+.cliquable {
+	transition: linear 0.1s;
+}
+
+.cliquable:hover {
+	transform: scale(1.05);
+}
+
+.cliquable:active {
+	transform: scale(0.9);
+}
+
 .contact-list {
 	background-color: #2d3342;
 	height: 100%;
@@ -51,6 +78,10 @@ export default {
 	height: 70px;
 	width: 100%;
 	background-color: #3ec8a0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
 }
 
 .contacts-container {
@@ -105,4 +136,5 @@ export default {
 .contact-not-online {
 	background-color: red;
 }
+
 </style>
