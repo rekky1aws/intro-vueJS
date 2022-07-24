@@ -11,5 +11,7 @@ import Chat from './components/Chat.vue'
 </template>
 
 <style>
-
+body {
+  overflow: hidden;
+}
 </style>
