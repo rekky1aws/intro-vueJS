@@ -1,17 +1,16 @@
 <script>
 class Message {
-	constructor(leftUSer, text)
+	constructor(leftUser, text)
 	{
-		this.leftUSer = leftUSer;
+		this.leftUser = leftUser;
 		this.text = text;
 	}
 }
 
 class User {
-	constructor(name, isLeft, imageLink = "../placeholder.png")
+	constructor(name, imageName = "../placeholder.png")
 	{
 		this.name = name;
-		this.isLeft = isLeft;
 		this.imageLink = "/src/media/images/contacts/" + imageName;
 	}
 }
@@ -20,7 +19,8 @@ export default {
 	data() {
 		return {
 			users: [
-				{name: "VueBot", imageLink: "/src/media/images/contacts/VueBot.png"},
+				new User ("VueBot", "VueBot.png"),
+				new User ("rekkylaws")
 			],
 			messages: [
 				new Message(true, "Hello !"),
@@ -37,6 +37,16 @@ export default {
 			<img :src="users[0].imageLink" class="window-contact-image">
 			<div class="window-contact-name">{{ users[0].name }}</div>
 		</header>
+		<div class="messages-container">
+			<div class="message" v-for="message in messages">
+				<img v-if="message.leftUser" :src="users[0].imageLink" class="message-image">
+				<img v-else :src="users[1].imageLink" class="message-image">
+				<div class="message-text" v-if="message.leftUser" >
+					
+				</div>
+			</div>
+			
+		</div>
 	</div>
 </template>
 
@@ -69,5 +79,9 @@ header {
 
 .window-contact-name {
 	font-size: 30px;
+}
+
+.messages-container {
+	height: 100%;
 }
 </style>
