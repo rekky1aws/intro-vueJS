@@ -18,7 +18,13 @@ export default {
 		return {
 			contacts: [
 				new Contact("VueBot", "VueBot.png", true),
-				new Contact("Jean Mich")
+				new Contact("Jean Mich"),
+				{
+					imageLink: "https://picsum.photos/200",
+					isConnected: true,
+					name: "Paul"
+				},
+				
 			]
 		}
 	}
@@ -32,6 +38,7 @@ export default {
 				<BurgerMenuIcon />
 			</button>
 			<h1>Vue Chat</h1>
+			<div></div>
 		</div>
 		<div class="contacts-container">
 			<div class="contact" v-for="contact in contacts">
@@ -75,9 +82,10 @@ export default {
 }
 
 .top-menu {
+	position: absolute;
 	height: 70px;
 	width: 100%;
-	background-color: #3ec8a0;
+	background-color: #aaf2de;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -87,6 +95,7 @@ export default {
 .contacts-container {
 	display: flex;
 	flex-direction: column;
+	margin-top: 70px;
 }
 
 .contact {
@@ -101,6 +110,8 @@ export default {
 }
 
 .contact:hover {
+	padding: 2px;
+	padding-left: 15px;
 	background-color: #1d1d1d1d;
 	-webkit-box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.05);
 	-moz-box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.05);

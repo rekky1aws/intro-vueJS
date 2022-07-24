@@ -11,5 +11,5 @@ import Chat from './components/Chat.vue'
 </template>
 
 <style>
-  
+
 </style>
