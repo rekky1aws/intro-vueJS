@@ -27,6 +27,11 @@ export default {
 				new Message(false, "Hi !")
 			],
 		}
+	},
+	methods: {
+		getPositionClass(isLeft) {
+			return isLeft ? "message-left" : "message-right";
+		}
 	}
 }
 </script>
@@ -38,14 +43,13 @@ export default {
 			<div class="window-contact-name">{{ users[0].name }}</div>
 		</header>
 		<div class="messages-container">
-			<div class="message" v-for="message in messages">
+			<div class="message" v-for="message in messages" :class="getPositionClass(message.leftUser)">
 				<img v-if="message.leftUser" :src="users[0].imageLink" class="message-image">
 				<img v-else :src="users[1].imageLink" class="message-image">
-				<div class="message-text" v-if="message.leftUser" >
-					
+				<div class="message-text">
+					{{ message.text}}
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </template>
@@ -65,6 +69,8 @@ header {
 	top: 0;
 	right: 0;
 	width: calc(100% - 300px);
+	height: 100vh;
+	background-color: #1D1D1D;
 }
 
 .window-contact-image {
@@ -83,5 +89,32 @@ header {
 
 .messages-container {
 	height: 100%;
+}
+
+.message {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin:  15px;
+}
+
+.message-image {
+	aspect-ratio: 1;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid white;
+	background-color: white;
+}
+
+.message-right {
+	float: right;
+	flex-direction: row-reverse;
+}
+
+.message-text {
+	padding: 15px 10px;
+	background-color: lightgray;
+	border-radius: 20px;	
+	font-size: 25px;
 }
 </style>
